@@ -4590,11 +4590,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\acer\\source\\repos\\home project\\home project.csproj",
+      "projectUniqueName": "C:\\Users\\acer\\source\\repos\\Home-project\\home project.csproj",
       "projectName": "home project",
-      "projectPath": "C:\\Users\\acer\\source\\repos\\home project\\home project.csproj",
+      "projectPath": "C:\\Users\\acer\\source\\repos\\Home-project\\home project.csproj",
       "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\acer\\source\\repos\\home project\\obj\\",
+      "outputPath": "C:\\Users\\acer\\source\\repos\\Home-project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
