@@ -27,14 +27,14 @@ namespace UnitTestProject1
             driver.Url = "https://www.kinopoisk.ru//";
             driver.FindElement(By.Name("kp_query")).SendKeys("John Wick");
             driver.FindElement(By.Name("kp_query")).SendKeys(Keys.Enter);
-            wait.Until(ExpectedConditions.TitleIs("Результаты поиска (1334)"));
+            wait.Until(ExpectedConditions.TitleIs("Результаты поиска (1336)"));
         }
 
         [TearDown]
         public void stop()
         {
-            //driver.Quit();
-            //driver = null;
+            driver.Quit();
+            driver = null;
         }
     }
 }
