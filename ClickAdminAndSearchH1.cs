@@ -37,9 +37,9 @@ namespace AdminSearch
             IList< IWebElement > childApps;
             for (int i = 0; i < parentApps.Count; i++)
             {
-                Thread.Sleep(200);
+                Thread.Sleep(500);
                 parentApps[i].Click();
-                Thread.Sleep(300);
+                Thread.Sleep(500);
                 wait.Until(ExpectedConditions.ElementExists(By.CssSelector("h1")));
                 
                 if (driver.FindElements(By.ClassName("docs")).Count > 0)
