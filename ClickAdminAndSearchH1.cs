@@ -15,6 +15,7 @@ namespace AdminSearch
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+        
 
         [SetUp]
 
