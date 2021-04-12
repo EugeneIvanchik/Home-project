@@ -188,7 +188,6 @@ C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\zh-Hans\Microsof
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.csprojAssemblyReference.cache
 C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.AssemblyInfoInputs.cache
 C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.AssemblyInfo.cs
 C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.csproj.CoreCompileInputs.cache
@@ -196,3 +195,4 @@ C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.csp
 C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.dll
 C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.pdb
 C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.genruntimeconfig.cache
+C:\Users\acer\source\repos\Home-project\obj\Debug\netcoreapp3.1\home project.csprojAssemblyReference.cache
