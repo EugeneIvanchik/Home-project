@@ -51,8 +51,8 @@ namespace CountriesToZonesAlphabet
                     ZonesStrArray.Add(ZonesElemArray[j].GetAttribute("textContent"));
                     ZonesStrArraySorted.Add(ZonesElemArray[j].GetAttribute("textContent"));
                     ZonesStrArraySorted.Sort();
-                    Assert.IsTrue(ZonesStrArray.SequenceEqual(ZonesStrArraySorted), "Zones are not alphabetised");
                 }
+                Assert.IsTrue(ZonesStrArray.SequenceEqual(ZonesStrArraySorted), "Zones are not alphabetised");
                 ZonesStrArray.Clear();
                 ZonesStrArraySorted.Clear();
                 driver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
