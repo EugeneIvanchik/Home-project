@@ -17,8 +17,14 @@ namespace Registration
         private WebDriverWait wait;
         private IWebElement dropdownElement;
         private SelectElement dropdown;
-        private string email = "E91dot@gmail.com";
+        private string email = "E90dot@gmail.com";
         private string password = "123qweQWE!@#";
+        private string firstname = "Frank";
+        private string lastname = "Noname";
+        private string phone = "+2002000000";
+        private string address1 = "Pushkina str 10";
+        private string postcode = "19405";
+        private string city = "San Francisco";
         private void byNameSendKeys(string locatorName, string keyValue)
         {
             driver.FindElement(By.Name(locatorName)).SendKeys(keyValue);
@@ -42,17 +48,22 @@ namespace Registration
         public void RegistrationTest()
         {
             driver.Url = "http://localhost/litecart";
+
             wait.Until(ExpectedConditions.TitleIs("Online Store | My Store"));
+
             IWebElement registrationLink = driver.FindElement(By.XPath("//*[contains(text(), 'New customers click here')]"));
             Thread.Sleep(500);
             registrationLink.Click();
+            
             wait.Until(ExpectedConditions.TitleIs("Create Account | My Store"));
+            
             Thread.Sleep(500);
-            byNameSendKeys("firstname", "Eugene");
-            byNameSendKeys("lastname", "92dot");
-            byNameSendKeys("address1", "Pushkina str 10");
-            byNameSendKeys("postcode", "10000");
-            byNameSendKeys("city", "Minsk");
+            
+            byNameSendKeys("firstname", firstname);
+            byNameSendKeys("lastname", lastname);
+            byNameSendKeys("address1", address1);
+            byNameSendKeys("postcode", postcode);
+            byNameSendKeys("city", city);
 
             dropdownElement = driver.FindElement(By.CssSelector("select[name='country_code']"));
             chooseFromDropdown("United States"); //правильный ли это подход: переменной dropdownElement
@@ -65,7 +76,7 @@ namespace Registration
             chooseFromDropdown("California");
 
             byNameSendKeys("email", email);
-            byNameSendKeys("phone", "+1200200000");
+            byNameSendKeys("phone", phone);
             byNameSendKeys("password", password);
             byNameSendKeys("confirmed_password", password);
             driver.FindElement(By.Name("newsletter")).Click();
