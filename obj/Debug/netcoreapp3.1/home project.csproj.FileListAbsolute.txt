@@ -101,7 +101,6 @@ C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\NUnit3.TestAdapt
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\nunit.engine.dll
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
-C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\resources\chromedriver.exe
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\home project.deps.json
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\home project.runtimeconfig.json
 C:\Users\acer\source\repos\Home-project\bin\Debug\netcoreapp3.1\home project.runtimeconfig.dev.json
