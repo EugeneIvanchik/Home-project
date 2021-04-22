@@ -15,6 +15,7 @@ namespace NewProduct
     {
         private static readonly string domainPath = AppDomain.CurrentDomain.BaseDirectory + @"resources\ChromeDriver";
         private static readonly string ballPath = AppDomain.CurrentDomain.BaseDirectory + @"resources\Ball\ball.jfif";
+        private string productName = "Ball";
         private IWebDriver driver;
         private WebDriverWait wait;
         private IWebElement dropdownElement;
@@ -69,7 +70,7 @@ namespace NewProduct
 
             driver.FindElement(By.XPath("//input[@name='status' and @value='1']")).Click();
 
-            byNameSendKeys("name[en]", "Ball");
+            byNameSendKeys("name[en]", productName);
 
             byNameSendKeys("code", "222310");
 
@@ -130,6 +131,11 @@ namespace NewProduct
             clearElementContent("gross_prices[EUR]");
 
             byNameSendKeys("gross_prices[EUR]", "132");
+
+            driver.FindElement(By.XPath("//button[@name='save']")).Click();
+
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[contains(text(), '" + productName + "')]")));
+            
 
         }
 
