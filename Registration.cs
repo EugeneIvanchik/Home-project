@@ -30,6 +30,13 @@ namespace Registration
             driver.FindElement(By.Name(locatorName)).SendKeys(keyValue);
         }
 
+        public void unhide(IWebDriver driver, IWebElement element)
+        {
+            (driver as IJavaScriptExecutor).ExecuteScript("arguments[0].style.opacity=1;"
+              + "arguments[0].style.width=100px;"
+              + "arguments[0].style.height=20px;", element);
+        }
+
         private void chooseFromDropdown(string textValue)
         {
             dropdown = new SelectElement(dropdownElement);
@@ -40,7 +47,7 @@ namespace Registration
 
         public void start()
         {
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
         }
 
@@ -65,13 +72,17 @@ namespace Registration
             byNameSendKeys("postcode", postcode);
             byNameSendKeys("city", city);
 
-            dropdownElement = driver.FindElement(By.CssSelector("select[name='country_code']"));
-            chooseFromDropdown("United States"); //правильный ли это подход: переменной dropdownElement
-                                                 //присваивать каждый раз новый dropdown на странице перед тем
-                                                 //как использовать метод по выбору значения из dropdown?
+            //dropdownElement = driver.FindElement(By.CssSelector("select[name='country_code']"));
+            //unhide(driver, dropdownElement);
+            //chooseFromDropdown("United States");
+            //не смог сделать этот Select элемент доступным для firefox при помощи JS, пришлось искать через Span
+            //если есть возможность, подскажите в комментариях, как сделать select доступным
+
+            driver.FindElement(By.XPath("//td[contains(text(), 'Country')]/span[@dir='ltr']")).Click();
+            driver.FindElement(By.XPath("//input[@class='select2-search__field']")).SendKeys("United States");
+            driver.FindElement(By.XPath("//input[@class='select2-search__field']")).SendKeys(Keys.Enter);
 
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("select[name='zone_code']")));
-
             dropdownElement = driver.FindElement(By.CssSelector("select[name='zone_code']"));
             chooseFromDropdown("California");
 
@@ -80,6 +91,7 @@ namespace Registration
             byNameSendKeys("password", password);
             byNameSendKeys("confirmed_password", password);
             driver.FindElement(By.Name("newsletter")).Click();
+
             driver.FindElement(By.Name("create_account")).Click();
 
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='notices']/div[contains(text(), ' Your customer account has been created.')]")));
@@ -97,6 +109,7 @@ namespace Registration
 
             logoutLink = driver.FindElement(By.XPath("//*[contains(text(), 'Logout')]"));
             logoutLink.Click();
+
         }
 
         [TearDown]
