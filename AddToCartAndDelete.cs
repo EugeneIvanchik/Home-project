@@ -18,13 +18,15 @@ namespace AddToCartAndDelete
         private WebDriverWait wait;
         private IWebElement numberOfItemsInCartElement;
         private int numberOfItemsInCart;
+        private int numberOfRecordsInSummary;
         private IWebElement removeButtonElement;
         private string removedItemName;
         private IWebElement tableRecord;
-        string[] duckNames = { "Red Duck", "Purple Duck", "Green Duck" };
-        private void openItemByName(string itemName)
+        private IWebElement sizeDropdownElement;
+        private SelectElement sizeDropdown;
+        private void openFirstItem()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title='" + itemName + "']"))).Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='box-most-popular']//li[1]/a"))).Click();
         }
 
         private void rememberNumberOfItemsInCart()
@@ -34,6 +36,17 @@ namespace AddToCartAndDelete
         }
         private void addToCart()
         {
+            try
+            {
+                sizeDropdownElement = driver.FindElement(By.XPath("//select[@name='options[Size]']"));
+                sizeDropdown = new SelectElement(sizeDropdownElement);
+                sizeDropdown.SelectByIndex(1);
+            }
+
+            catch
+            {
+                
+            }
             Thread.Sleep(500);
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[contains(text(), 'Add To Cart')]"))).Click();
         }
@@ -51,8 +64,21 @@ namespace AddToCartAndDelete
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[contains(text(), 'Checkout')]"))).Click();
         }
 
+        private void defineNumberOfRecordsInSummary()
+        {
+            numberOfRecordsInSummary = driver.FindElements(By.XPath("//div[@id='box-checkout-summary']//td[@class='item']")).Count;
+        }
+
         private void removeItem()
         {
+            try
+            {
+                driver.FindElement(By.XPath("//ul[@class='shortcuts']//a")).Click();
+            }
+            catch
+            {
+
+            }
             removeButtonElement = driver.FindElement(By.XPath("//button[contains(text(), 'Remove')]"));
             removedItemName = driver.FindElement(By.XPath("//button[contains(text(), 'Remove')]/../../p/a")).Text;
             tableRecord = driver.FindElement(By.XPath("//td[contains(text(), '" + removedItemName + "')]"));
@@ -60,8 +86,6 @@ namespace AddToCartAndDelete
             removeButtonElement.Click();
             wait.Until(ExpectedConditions.StalenessOf(tableRecord));
         }
-
-
 
         [SetUp]
 
@@ -76,9 +100,9 @@ namespace AddToCartAndDelete
         {
             driver.Url = "http://localhost/litecart";
 
-            for(int i = 0; i < duckNames.Length; i++)
+            for(int i = 0; i < 3; i++)
             {
-                openItemByName(duckNames[i]);
+                openFirstItem();
                 rememberNumberOfItemsInCart();
                 addToCart();
                 waitCartRefreshed();
@@ -87,7 +111,9 @@ namespace AddToCartAndDelete
 
             checkout();
 
-            for (int i = 0; i < 3; i++)
+            defineNumberOfRecordsInSummary();
+
+            for (int i = 0; i < numberOfRecordsInSummary; i++)
             {
                 removeItem();
             }
@@ -96,8 +122,8 @@ namespace AddToCartAndDelete
         [TearDown]
         public void stop()
         {
-            //driver.Quit();
-            //driver = null;
+            driver.Quit();
+            driver = null;
         }
     }
 }
